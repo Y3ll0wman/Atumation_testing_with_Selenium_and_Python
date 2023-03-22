@@ -20,9 +20,9 @@ def sel(link):
     # ждем загрузки страницы
     time.sleep(1)
     # находим элемент, содержащий текст
-    welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
+    welcome_text_element = browser.find_element(By.TAG_NAME, "h1")
     # записываем в переменную welcome_text текст из элемента welcome_text_elt
-    welcome_text = welcome_text_elt.text
+    welcome_text = welcome_text_element.text
     browser.quit()
     return welcome_text
 
@@ -33,7 +33,7 @@ class Test_welcome_text(unittest.TestCase):
         self.assertEqual(
             "Congratulations! You have successfully registered!",
             sel(link),
-            "Congratulations!"
+            "Element h1 does not include text 'Congratulations! You have successfully registered!'"
         )
 
     def test_abs2(self):
@@ -41,7 +41,7 @@ class Test_welcome_text(unittest.TestCase):
         self.assertEqual(
             "Congratulations! You have successfully registered!",
             sel(link),
-            "Congratulations!"
+             "Element h1 does not include text 'Congratulations! You have successfully registered!'"
         )
 
 
