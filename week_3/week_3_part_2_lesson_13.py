@@ -11,10 +11,12 @@ def sel(link):
 
     elements = ["first_block input.form-control.first", "first_block input.form-control.second",
                 "first_block input.form-control.third"]
+
     for element in elements:
         f_element = browser.find_element(By.CLASS_NAME, element)
         f_element.send_keys("fake_text")
     # Отправляем заполненную форму
+
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
     button.click()
     # ждем загрузки страницы
@@ -24,6 +26,7 @@ def sel(link):
     # записываем в переменную welcome_text текст из элемента welcome_text_elt
     welcome_text = welcome_text_element.text
     browser.quit()
+
     return welcome_text
 
 
