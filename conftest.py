@@ -35,15 +35,6 @@ supported_languages = {
 
 
 @pytest.fixture(scope="function")
-def browser():
-    print("\nstart browser for test..")
-    browser = webdriver.Chrome()
-    yield browser
-    print("\nquit browser..")
-    browser.quit()
-
-
-@pytest.fixture(scope="function")
 def login():
     return '**********'
 
@@ -74,10 +65,12 @@ def browser(request):
             options = Options()
             options.add_experimental_option('prefs', {'intl.accept_languages': language})
             browser = webdriver.Chrome(options=options)
+            print("\nstart browser..")
         elif browser_name == 'firefox':
             fp = webdriver.FirefoxProfile()
             fp.set_preference("intl.accept_languages", language)
             browser = webdriver.Firefox(firefox_profile=fp)
+            print("\nstart browser..")
     else:
         joined_languages = ', '.join(supported_languages.keys())
         raise pytest.UsageError(f"--language is invalid, supported languages: {joined_languages}")
