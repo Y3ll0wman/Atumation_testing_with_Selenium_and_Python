@@ -12,4 +12,3 @@ def test_add_to_basket_button_exists(browser):
                                   ".product_page #add_to_basket_form .btn-add-to-basket")
 
     assert button, "Button has not been found."
-
